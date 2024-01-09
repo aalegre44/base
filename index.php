@@ -31,7 +31,7 @@
 
         $conexion = mysqli_connect(getenv('MYSQL_HOST'), getenv('MYSQL_USER'), getenv('MYSQL_PASSWORD'), "BASEDATOS");
 
-        $cadenaSQL = "select * from agenda";
+        $cadenaSQL = "select a.nombre,a.apellido,a.direccion,a.telefijo,a.telefmovi,a.email,d.Nombre from agenda a inner join Distrito d on a.idDistrito=d.id";
         $resultado = mysqli_query($conexion, $cadenaSQL);
 
         while ($fila = mysqli_fetch_object($resultado)) {
@@ -41,7 +41,7 @@
          "</td><td>" . $fila->telefijo .
          "</td><td>" . $fila->telefmovi .
          "</td><td>" . $fila->email .
-         "</td><td>" . $fila->idDistrito . 
+         "</td><td>" . $fila->Distrito . 
          "</td></tr>";
        }
        ?>
